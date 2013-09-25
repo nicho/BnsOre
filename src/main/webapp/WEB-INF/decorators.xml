@@ -5,6 +5,12 @@
 		<pattern>/api/*</pattern>
 	</excludes>
 	
+	<decorator name="default2" page="default2.jsp">
+		<pattern>/task</pattern>
+	</decorator>
+	<decorator name="default3" page="default2.jsp">
+		<pattern>/ore/*</pattern>
+	</decorator>
 	<decorator name="default" page="default.jsp">
 		<pattern>/*</pattern>
 	</decorator>
