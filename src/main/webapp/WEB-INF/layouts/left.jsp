@@ -5,10 +5,10 @@
 <div id="leftbar" class="span2">
 	<h1>大漠圣物</h1>
 	<div class="submenu">
-		<a id="account-tab"href="${ctx}/ore/">土门阵</a>
-		<a id="account-tab"href="${ctx}/account/user/">烈沙地带</a>
-		<a id="account-tab"href="${ctx}/account/user/">陶土林</a>
-		<a id="account-tab"href="${ctx}/account/user/">五彩岩岛</a>
+		<a id="account-tab"href="${ctx}/ore/1">土门阵</a>
+		<a id="account-tab"href="${ctx}/ore/2">烈沙地带</a>
+		<a id="account-tab"href="${ctx}/ore/3">陶土林</a>
+		<a id="account-tab"href="${ctx}/ore/4">五彩岩岛</a>
 	</div>
 	<h1>独立演示</h1>
 	<div class="submenu">

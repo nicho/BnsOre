@@ -70,7 +70,7 @@ public class OreService {
 	 */
 	private Specification<Ore> buildSpecification(Long userId, Map<String, Object> searchParams) {
 		Map<String, SearchFilter> filters = SearchFilter.parse(searchParams);
-		filters.put("user.id", new SearchFilter("user.id", Operator.EQ, userId));
+		//filters.put("user.id", new SearchFilter("user.id", Operator.EQ, userId));
 		Specification<Ore> spec = DynamicSpecifications.bySearchFilter(filters.values(), Ore.class);
 		return spec;
 	}

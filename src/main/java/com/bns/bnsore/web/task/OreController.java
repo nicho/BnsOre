@@ -51,7 +51,7 @@ public class OreController {
 		Long userId = getCurrentUserId();
 
 		Page<Ore> ores = oreService.getUserOre(userId, searchParams, pageNumber, PAGE_SIZE, sortType);
-
+		
 		model.addAttribute("ores", ores);
 		model.addAttribute("sortType", sortType);
 		model.addAttribute("sortTypes", sortTypes);
@@ -60,12 +60,50 @@ public class OreController {
 
 		return "task/oreList";
 	}
+	
+	@RequestMapping(value = "{map}")
+	public String list(@PathVariable("map") int map,@RequestParam(value = "sortType", defaultValue = "auto") String sortType,
+			@RequestParam(value = "page", defaultValue = "1") int pageNumber, Model model, ServletRequest request) {
+		Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
+		Long userId = getCurrentUserId();
 
+		String map_name="";
+		if(map==1)
+		{
+			map_name="土门阵";
+		}
+		else if(map==2)
+		{
+			map_name="烈沙地带";
+		}
+		else if(map==3)
+		{
+			map_name="陶土林";
+		}
+		else if(map==4)
+		{
+			map_name="五彩岩岛";
+		}
+
+		searchParams.put("EQ_map",map_name);
+		request.setAttribute("map_name",map_name);
+		
+		Page<Ore> ores = oreService.getUserOre(userId, searchParams, pageNumber, PAGE_SIZE, sortType);
+		
+		model.addAttribute("ores", ores);
+		model.addAttribute("sortType", sortType);
+		model.addAttribute("sortTypes", sortTypes);
+		// 将搜索条件编码成字符串，用于排序，分页的URL
+		model.addAttribute("searchParams", Servlets.encodeParameterStringWithPrefix(searchParams, "search_"));
+
+		return "task/oreList";
+	}
+ 
 	@RequestMapping(value = "create", method = RequestMethod.GET)
 	public String createForm(Model model) {
 		model.addAttribute("ore", new Ore());
 		model.addAttribute("action", "create");
-		return "ore/oreForm";
+		return "task/oreForm";
 	}
 
 	@RequestMapping(value = "create", method = RequestMethod.POST)
@@ -75,28 +113,57 @@ public class OreController {
 
 		oreService.saveOre(newOre);
 		redirectAttributes.addFlashAttribute("message", "创建任务成功");
-		return "redirect:/ore/";
+
+		String index="";
+		if("土门阵".equals(newOre.getMap()))
+			index="1";
+		if("烈沙地带".equals(newOre.getMap()))
+			index="2";
+		if("陶土林".equals(newOre.getMap()))
+			index="3";
+		if("五彩岩岛".equals(newOre.getMap()))
+			index="4";
+		return "redirect:/ore/"+index;
 	}
 
 	@RequestMapping(value = "update/{id}", method = RequestMethod.GET)
 	public String updateForm(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("ore", oreService.getOre(id));
 		model.addAttribute("action", "update");
-		return "ore/oreForm";
+		return "task/oreForm";
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(@Valid @ModelAttribute("preloadOre") Ore ore, RedirectAttributes redirectAttributes) {
 		oreService.saveOre(ore);
 		redirectAttributes.addFlashAttribute("message", "更新任务成功");
-		return "redirect:/ore/";
+		String index="";
+		if("土门阵".equals(ore.getMap()))
+			index="1";
+		if("烈沙地带".equals(ore.getMap()))
+			index="2";
+		if("陶土林".equals(ore.getMap()))
+			index="3";
+		if("五彩岩岛".equals(ore.getMap()))
+			index="4";
+		return "redirect:/ore/"+index;
 	}
 
 	@RequestMapping(value = "delete/{id}")
 	public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+		Ore ore=oreService.getOre(id);
 		oreService.deleteOre(id);
 		redirectAttributes.addFlashAttribute("message", "删除任务成功");
-		return "redirect:/ore/";
+		String index="";
+		if("土门阵".equals(ore.getMap()))
+			index="1";
+		if("烈沙地带".equals(ore.getMap()))
+			index="2";
+		if("陶土林".equals(ore.getMap()))
+			index="3";
+		if("五彩岩岛".equals(ore.getMap()))
+			index="4";
+		return "redirect:/ore/"+index;
 	}
 
 	/**

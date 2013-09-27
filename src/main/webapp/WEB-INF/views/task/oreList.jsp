@@ -15,7 +15,7 @@
 	<div class="row">
 		<div class="span4 offset7">
 			<form class="form-search" action="#">
-				<label>名称：</label> <input type="text" name="search_LIKE_title" class="input-medium" value="${param.search_LIKE_title}"> 
+				<label>名称：</label> <input type="text" name="search_LIKE_name" class="input-medium" value="${param.search_LIKE_name}"> 
 				<button type="submit" class="btn" id="search_btn">Search</button>
 		    </form>
 	    </div>
@@ -23,10 +23,12 @@
 	</div>
 	
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>名称</th><th>刷新时间<th><th>管理</th></tr></thead>
+		<thead><tr><th>地图</th><th>线路</th><th>名称</th><th>刷新时间<th></tr></thead>
 		<tbody>
 		<c:forEach items="${ores.content}" var="ore">
 			<tr>
+				<td>${ore.map}</td>
+				<td>${ore.line}</td>
 				<td><a href="${ctx}/ore/update/${ore.id}">${ore.name}</a></td>
 				<td>
 					<fmt:formatDate value="${ore.refurbishDate}" pattern="yyyy年MM月dd日  HH时mm分ss秒" />
@@ -39,7 +41,7 @@
 	
 	<tags:pagination page="${ores}" paginationSize="5"/>
 
-	<div><a class="btn" href="${ctx}/ore/create">创建任务</a></div>
+	<div><a class="btn" href="${ctx}/ore/create?map_name=${map_name}">创建</a></div>
 </body>
  
 </html>

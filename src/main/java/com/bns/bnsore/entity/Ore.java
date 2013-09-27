@@ -14,11 +14,20 @@ public class Ore extends IdEntity {
 	private String name;
 	private String types;
 	private String map;
+	private String line;
 	private Date refurbishDate;
 	private Date createDate;
 	private Date modifyDate;
 	private User user;
 	
+	public String getLine() {
+		return line;
+	}
+
+	public void setLine(String line) {
+		this.line = line;
+	}
+
 	public String getName() {
 		return name;
 	}
