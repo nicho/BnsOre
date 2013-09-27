@@ -12,6 +12,8 @@
 	<c:if test="${not empty message}">
 		<div id="message" class="alert alert-success"><button data-dismiss="alert" class="close">×</button>${message}</div>
 	</c:if>
+	
+
 	<div class="row">
 		<div class="span4 offset7">
 			<form class="form-search" action="#">
@@ -42,6 +44,11 @@
 	<tags:pagination page="${ores}" paginationSize="5"/>
 
 	<div><a class="btn" href="${ctx}/ore/create?map_name=${map_name}">创建</a></div>
+	
+	
+		<div>
+		<img alt="" src="../static/images/1.png">
+	</div>
 </body>
  
 </html>
