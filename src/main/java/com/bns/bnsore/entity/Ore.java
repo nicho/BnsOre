@@ -61,7 +61,7 @@ public class Ore extends IdEntity {
 	public void setRefurbishDate(Date refurbishDate) {
 		this.refurbishDate = refurbishDate;
 	}
-
+ 
 	public Date getCreateDate() {
 		return createDate;
 	}

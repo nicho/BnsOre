@@ -4,6 +4,8 @@
 
 <html>
 <head>
+
+
 	<title>圣物管理</title>
 	
 	<script>
@@ -48,7 +50,33 @@
 					<input type="text" id="ore_line" name="line"  value="${ore.line}" class="input-large required" />
 				</div>
 			</div>	
-			 
+			<div class="control-group">
+				<label for="description" class="control-label">刷新时间:</label>
+				<div class="controls">
+					
+						<div id="datetimepicker" class="input-append date">
+					      <input type="text" id="ore_refurbishDate" name="refurbishDate"  value="${ore.refurbishDate}" class="input-large required" />
+					      <span class="add-on">
+					        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					      </span>
+					    </div>  
+					
+				</div>
+			</div>	
+		
+
+    
+			<script type="text/javascript" src="${ctx}/static/jquery/bootstrap-datetimepicker.min.js"></script>
+			<script type="text/javascript" src="${ctx}/static/jquery/bootstrap-datetimepicker.pt-BR.js"></script>
+			  <script type="text/javascript">
+			    $('#datetimepicker').datetimepicker({
+			      format: 'yyyy-MM-dd hh:mm:ss',
+			      language: 'pt-BR'
+			    });
+			  </script>
+
+    
+    
 			<div class="form-actions">
 				<input id="submit_btn" class="btn btn-primary" type="submit" value="提交"/>&nbsp;	
 				<input id="cancel_btn" class="btn" type="button" value="返回" onclick="history.back()"/>

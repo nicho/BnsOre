@@ -46,9 +46,9 @@
 	<div><a class="btn" href="${ctx}/ore/create?map_name=${map_name}">创建</a></div>
 	
 	
-		<div>
+	<!-- 	<div>
 		<img alt="" src="../static/images/1.png">
-	</div>
+	</div> -->
 </body>
  
 </html>
